@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="appointmentPage" prefHeight="690.0" prefWidth="1241.0" style="-fx-background-color: #E0FFD1;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.gdse.ormcaursework.controller.AppointmentsController">
+    <children>
+        <!-- Header -->
+        <AnchorPane layoutX="0.0" layoutY="0.0" prefHeight="60.0" prefWidth="1241.0" style="-fx-background-color: #376E6F;">
+            <children>
+                <Label layoutX="100.0" layoutY="17.0" text="Appointment Management" textFill="WHITE">
+                    <font>
+                        <Font name="Georgia Bold" size="29.0" />
+                    </font>
+                </Label>
+            <ImageView fx:id="image" fitHeight="39.0" fitWidth="52.0" layoutX="379.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="32.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/appointment.png" />
+               </image>
+            </ImageView>
+            </children>
+        </AnchorPane>
+
+        <!-- Patient Details Section -->
+        <AnchorPane layoutX="20.0" layoutY="75.0" prefHeight="220.0" prefWidth="1012.0" style="-fx-background-color: #8ede8e; -fx-background-radius: 8;">
+            <effect>
+                <DropShadow color="#00000026" height="8.0" radius="3.5" width="8.0" />
+            </effect>
+            <children>
+                <Label layoutX="15.0" layoutY="10.0" style="-fx-text-fill: #4C8C8C;" text="Patient Details">
+                    <font>
+                        <Font name="Georgia Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Separator layoutX="15.0" layoutY="41.0" prefHeight="2.0" prefWidth="984.0" />
+
+                <!-- Search Controls -->
+                <Button fx:id="searchPatient" layoutX="15.0" layoutY="55.0" mnemonicParsing="false" onMouseClicked="#searchPatientAction" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #4C8C8C; -fx-background-radius: 5;" text="Search" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <TextField fx:id="search" layoutX="125.0" layoutY="55.0" prefHeight="30.0" prefWidth="551.0" promptText="Enter Patient ID or Name" style="-fx-background-radius: 5;">
+                    <font>
+                        <Font name="System" size="14.0" />
+                    </font>
+                </TextField>
+
+                <!-- Patient Info Display -->
+                <Label layoutX="15.0" layoutY="100.0" style="-fx-text-fill: #333333;" text="Patient ID:">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+
+                <Label layoutX="15.0" layoutY="130.0" style="-fx-text-fill: #333333;" text="Name:">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+
+                <Label layoutX="15.0" layoutY="160.0" style="-fx-text-fill: #333333;" text="DOB:">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+
+                <Label layoutX="15.0" layoutY="190.0" style="-fx-text-fill: #333333;" text="NIC:">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+
+                <Label layoutX="465.0" layoutY="99.0" style="-fx-text-fill: #333333;" text="Gender:">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+
+                <Label layoutX="465.0" layoutY="129.0" style="-fx-text-fill: #333333;" text="Address:">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+
+                <Label layoutX="465.0" layoutY="159.0" style="-fx-text-fill: #333333;" text="Tel No:">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+
+                <Label layoutX="465.0" layoutY="189.0" style="-fx-text-fill: #333333;" text="Email:">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+            <VBox fx:id="vbox1" layoutX="111.0" layoutY="100.0" prefHeight="112.0" prefWidth="312.0" spacing="10.0">
+               <children>
+                      <Label fx:id="patientID" prefWidth="120.0" text="--">
+                          <font>
+                              <Font name="System" size="14.0" />
+                          </font>
+                      </Label>
+                      <Label fx:id="patientName" prefWidth="280.0" text="--">
+                          <font>
+                              <Font name="System" size="14.0" />
+                          </font>
+                      </Label>
+                      <Label fx:id="patientDOB" prefWidth="120.0" text="--">
+                          <font>
+                              <Font name="System" size="14.0" />
+                          </font>
+                      </Label>
+                      <Label fx:id="patientNIC" prefWidth="200.0" text="--">
+                          <font>
+                              <Font name="System" size="14.0" />
+                          </font>
+                      </Label>
+               </children>
+            </VBox>
+            <VBox fx:id="vbox2" layoutX="531.0" layoutY="98.0" prefHeight="112.0" prefWidth="312.0" spacing="10.0">
+               <children>
+                      <Label fx:id="patientAddress" prefWidth="300.0" text="--">
+                          <font>
+                              <Font name="System" size="14.0" />
+                          </font>
+                      </Label>
+                      <Label fx:id="patientTelNO" prefWidth="160.0" text="--">
+                          <font>
+                              <Font name="System" size="14.0" />
+                          </font>
+                      </Label>
+                      <Label fx:id="patientEMAIL" prefWidth="300.0" text="--">
+                          <font>
+                              <Font name="System" size="14.0" />
+                          </font>
+                      </Label>
+                      <Label fx:id="patientGender" prefWidth="100.0" text="--">
+                          <font>
+                              <Font name="System" size="14.0" />
+                          </font>
+                      </Label>
+               </children>
+            </VBox>
+            </children>
+        </AnchorPane>
+
+        <!-- Session Details Section -->
+        <AnchorPane layoutX="20.0" layoutY="310.0" prefHeight="190.0" prefWidth="585.0" style="-fx-background-color: #8ede8e; -fx-background-radius: 8;">
+            <effect>
+                <DropShadow color="#00000026" height="8.0" radius="3.5" width="8.0" />
+            </effect>
+            <children>
+                <Label layoutX="15.0" layoutY="10.0" style="-fx-text-fill: #4C8C8C;" text="Session Details">
+                    <font>
+                        <Font name="Georgia Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Separator layoutX="15.0" layoutY="40.0" prefWidth="555.0" />
+
+                <Label layoutX="15.0" layoutY="55.0" style="-fx-text-fill: #333333;" text="Session ID:">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <Label fx:id="sessionID" layoutX="100.0" layoutY="55.0" prefWidth="180.0" text="Auto-generated">
+                    <font>
+                        <Font name="System" size="14.0" />
+                    </font>
+                </Label>
+
+                <Label layoutX="15.0" layoutY="90.0" style="-fx-text-fill: #333333;" text="Time:">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="sessionTime" layoutX="100.0" layoutY="88.0" prefHeight="26.0" prefWidth="180.0" promptText="HH:MM:SS" style="-fx-background-radius: 5;">
+                    <font>
+                        <Font name="System" size="14.0" />
+                    </font>
+                </TextField>
+
+                <Label layoutX="300.0" layoutY="90.0" style="-fx-text-fill: #333333;" text="Date:">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <DatePicker fx:id="sessionDate" layoutX="350.0" layoutY="88.0" prefHeight="26.0" prefWidth="180.0" style="-fx-background-radius: 5;" />
+
+                <Label layoutX="15.0" layoutY="130.0" style="-fx-text-fill: #333333;" text="Notes:">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="sessionNotes" layoutX="100.0" layoutY="128.0" prefHeight="26.0" prefWidth="430.0" promptText="Special notes about session" style="-fx-background-radius: 5;">
+                    <font>
+                        <Font name="System" size="14.0" />
+                    </font>
+                </TextField>
+            </children>
+        </AnchorPane>
+
+        <!-- Assigned Resources Section -->
+        <AnchorPane layoutX="620.0" layoutY="310.0" prefHeight="190.0" prefWidth="200.0" style="-fx-background-color: #8ede8e; -fx-background-radius: 8;">
+            <effect>
+                <DropShadow color="#00000026" height="8.0" radius="3.5" width="8.0" />
+            </effect>
+            <children>
+                <Separator layoutX="15.0" layoutY="52.0" prefWidth="170.0" />
+                <Label fx:id="docLoadLabel" alignment="TOP_LEFT" layoutX="15.0" layoutY="63.0" prefHeight="112.0" prefWidth="170.0" text="Session Id" wrapText="true">
+                    <font>
+                        <Font name="System" size="14.0" />
+                    </font>
+                </Label>
+
+                <Button fx:id="addDoctors" layoutX="31.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#addDoctorsAction" prefHeight="30.0" prefWidth="137.0" style="-fx-background-color: #4C8C8C; -fx-background-radius: 5;" text="Assign Doctor" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+            </children>
+        </AnchorPane>
+
+        <!-- Programs Section -->
+        <AnchorPane layoutX="835.0" layoutY="310.0" prefHeight="190.0" prefWidth="200.0" style="-fx-background-color: #8ede8e; -fx-background-radius: 8;">
+            <effect>
+                <DropShadow color="#00000026" height="8.0" radius="3.5" width="8.0" />
+            </effect>
+            <children>
+                <Separator layoutX="15.0" layoutY="52.0" prefWidth="170.0" />
+                <ListView fx:id="programmsListView" layoutX="15.0" layoutY="63.0" prefHeight="112.0" prefWidth="170.0" style="-fx-background-radius: 5;" />
+                <Button fx:id="addPrograms" layoutX="24.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#addProgramsAction" prefHeight="32.0" prefWidth="151.0" style="-fx-background-color: #4C8C8C; -fx-background-radius: 5;" text="Select Programs" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+            </children>
+        </AnchorPane>
+
+        <!-- Payment Details Section -->
+        <AnchorPane layoutX="20.0" layoutY="515.0" prefHeight="145.0" prefWidth="800.0" style="-fx-background-color: #8ede8e; -fx-background-radius: 8;">
+            <effect>
+                <DropShadow color="#00000026" height="8.0" radius="3.5" width="8.0" />
+            </effect>
+            <children>
+                <Label layoutX="15.0" layoutY="10.0" style="-fx-text-fill: #4C8C8C;" text="Payment Details">
+                    <font>
+                        <Font name="Georgia Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Separator layoutX="15.0" layoutY="40.0" prefWidth="770.0" />
+
+                <Label layoutX="15.0" layoutY="55.0" style="-fx-text-fill: #333333;" text="Payment ID:">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <Label fx:id="paymentID" layoutX="115.0" layoutY="55.0" prefWidth="200.0" text="Auto-generated">
+                    <font>
+                        <Font name="System" size="14.0" />
+                    </font>
+                </Label>
+
+                <Label layoutX="15.0" layoutY="95.0" style="-fx-text-fill: #333333;" text="Amount (Rs):">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="payAMOUNT" layoutX="115.0" layoutY="93.0" prefHeight="26.0" prefWidth="200.0" promptText="0.00" style="-fx-background-radius: 5;">
+                    <font>
+                        <Font name="System" size="14.0" />
+                    </font>
+                </TextField>
+
+                <Label layoutX="350.0" layoutY="95.0" style="-fx-text-fill: #333333;" text="Payment Method:">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                </Label>
+                <ComboBox fx:id="paymentMethod" layoutX="480.0" layoutY="93.0" prefHeight="26.0" prefWidth="200.0" promptText="Select method" style="-fx-background-radius: 5;" />
+            </children>
+        </AnchorPane>
+
+        <!-- Action Buttons -->
+        <AnchorPane layoutX="1055.0" layoutY="75.0" prefHeight="600.0" prefWidth="170.0" style="-fx-background-color: #8ede8e; -fx-background-radius: 8;">
+            <effect>
+                <DropShadow color="#00000026" height="8.0" radius="3.5" width="8.0" />
+            </effect>
+            <children>
+                <Label layoutX="15.0" layoutY="10.0" style="-fx-text-fill: #4C8C8C;" text="Actions">
+                    <font>
+                        <Font name="Georgia Bold" size="18.0" />
+                    </font>
+                </Label>
+                <Separator layoutX="15.0" layoutY="40.0" prefWidth="140.0" />
+
+                <Button fx:id="addAppointmentBTN" layoutX="15.0" layoutY="70.0" mnemonicParsing="false" onAction="#addAppointmentBTNAction" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #346A6A; -fx-background-radius: 50;" text="ADD APPOINTMENT" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <effect>
+                        <DropShadow color="#00000040" height="5.0" radius="2.0" width="5.0" />
+                    </effect>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+
+                <Button fx:id="viewAppointmentsBTN" layoutX="15.0" layoutY="151.0" mnemonicParsing="false" onAction="#viewAppointmentsBTNAction" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #4C8C8C; -fx-background-radius: 50;" text="VIEW APPOINTMENTS" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="11.0" />
+                    </font>
+                    <effect>
+                        <DropShadow color="#00000040" height="5.0" radius="2.0" width="5.0" />
+                    </effect>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+
+                <Button fx:id="PatientsBTN" layoutX="15.0" layoutY="211.0" mnemonicParsing="false" onAction="#PatientsBTNAction" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #4C8C8C; -fx-background-radius: 50;" text="PATIENT RECORDS" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font>
+                    <effect>
+                        <DropShadow color="#00000040" height="5.0" radius="2.0" width="5.0" />
+                    </effect>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+
+                <Button fx:id="reset" layoutX="15.0" layoutY="331.0" mnemonicParsing="false" onAction="#resetAction" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: gray; -fx-background-radius: 50;" text="RESET FORM" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                    <effect>
+                        <DropShadow color="#00000040" height="5.0" radius="2.0" width="5.0" />
+                    </effect>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+
+                <Button fx:id="printBillBTN" layoutX="14.0" layoutY="269.0" mnemonicParsing="false" onAction="#printBillBTNAction" prefHeight="39.0" prefWidth="142.0" style="-fx-background-color: #4C8C8C; -fx-background-radius: 50;" text="Print Bill" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                    <effect>
+                        <DropShadow color="#00000040" height="5.0" radius="2.0" width="5.0" />
+                    </effect>
+                </Button>
+            </children>
+        </AnchorPane>
+      <Label layoutX="867.0" layoutY="588.0" prefHeight="36.0" prefWidth="42.0" text="Time:">
+         <font>
+            <Font name="Bodoni MT Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="time" layoutX="915.0" layoutY="588.0" prefHeight="36.0" prefWidth="63.0" text="00:00:00">
+         <font>
+            <Font name="Bodoni MT Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="867.0" layoutY="541.0" prefHeight="36.0" prefWidth="50.0" text="Date :">
+         <font>
+            <Font name="Bodoni MT Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="date" layoutX="922.0" layoutY="541.0" prefHeight="36.0" prefWidth="114.0" text="dd/mm/yy">
+         <font>
+            <Font name="Bodoni MT Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="414.0" layoutY="671.0" text="© Serenity Mental Health Therapy Center - Patient Management System" textFill="#4C8C8C">
+         <font>
+            <Font name="Georgia" size="12.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>
